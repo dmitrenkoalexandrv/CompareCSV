@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CompareCSV.Data
 {
-    public class ListOfArray
+    public interface IRepository
     {
-        public List<string[]> List { get; set; }
+        List<string[]> GetData(string path);
     }
 }

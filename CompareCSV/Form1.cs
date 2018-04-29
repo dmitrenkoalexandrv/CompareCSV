@@ -19,17 +19,20 @@ namespace ComapreCSV
         public Form1()
         {
             InitializeComponent();
+            
+            IRepository repo1 = new Repository();
+            IRepository repo2 = new Repository();
 
-            Compare comparator_1 = new Compare();
-            Compare comparator_2 = new Compare();
+            Compare comparator1 = new Compare(repo1);
+            Compare comparator2 = new Compare(repo2);
 
-            ListOfArray res = comparator_1.ParseCSV(@"c:\tmp\ex.csv");
-            DataTable table = comparator_1.ConvertListToDataTable(res);
-            dataGridView1.DataSource = table;
+            ListOfArray res1 = comparator1.GenerateData(@"c:\tmp\ex.csv");
+            DataTable table1 = comparator1.ConvertListToDataTable(res1);
+            dataGridView1.DataSource = table1;
 
-            ListOfArray res_1 = comparator_2.ParseCSV(@"c:\tmp\ex_1.csv");
-            DataTable table_1 = comparator_2.ConvertListToDataTable(res_1);
-            dataGridView2.DataSource = table_1;
+            ListOfArray res2 = comparator2.GenerateData(@"c:\tmp\ex_1.csv");
+            DataTable table2 = comparator2.ConvertListToDataTable(res2);
+            dataGridView2.DataSource = table2;
 
             this.ActiveControl = button1;
         }
@@ -37,27 +40,27 @@ namespace ComapreCSV
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var list_1 = dataGridView1.Rows.Cast<DataGridViewRow>().Where(row => row.Index >= 0);
-            var list_2 = dataGridView2.Rows.Cast<DataGridViewRow>().Where(row => row.Index >= 0);
+            var list1 = dataGridView1.Rows.Cast<DataGridViewRow>().Where(row => row.Index >= 0);
+            var list2 = dataGridView2.Rows.Cast<DataGridViewRow>().Where(row => row.Index >= 0);
 
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
-                if (!list_1.Any(s => s.Cells["ColumnName"].Value.Equals(row.Cells["ColumnName"].Value)))
+                if (!list1.Any(s => s.Cells["ColumnName"].Value.Equals(row.Cells["ColumnName"].Value)))
                 {
                     row.Cells["ColumnName"].Style.BackColor = Color.Cyan;
                 }
 
-                if (Check.CheckColumns(list_1, row, "ColumnName", "Value in Column with Max Length"))
+                if (Check.CheckColumns(list1, row, "ColumnName", "Value in Column with Max Length"))
                 {
                     row.Cells["Value in Column with Max Length"].Style.BackColor = Color.Lavender;
                 }
 
-                if (Check.CheckColumns(list_1, row, "ColumnName", "Suggested Type"))
+                if (Check.CheckColumns(list1, row, "ColumnName", "Suggested Type"))
                 {
                     row.Cells["Suggested Type"].Style.BackColor = Color.Lavender;
                 }
 
-                if (Check.CheckColumns(list_1, row, "ColumnName", "Max Lenght"))
+                if (Check.CheckColumns(list1, row, "ColumnName", "Max Lenght"))
                 {
                     row.Cells["Max Lenght"].Style.BackColor = Color.Lavender;
                 }
@@ -66,22 +69,22 @@ namespace ComapreCSV
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if (!list_2.Any(s => s.Cells["ColumnName"].Value.Equals(row.Cells["ColumnName"].Value)))
+                if (!list2.Any(s => s.Cells["ColumnName"].Value.Equals(row.Cells["ColumnName"].Value)))
                 {
                     row.Cells["ColumnName"].Style.BackColor = Color.Coral;
                 }
 
-                if (Check.CheckColumns(list_2, row, "ColumnName", "Value in Column with Max Length"))
+                if (Check.CheckColumns(list2, row, "ColumnName", "Value in Column with Max Length"))
                 {
                     row.Cells["Value in Column with Max Length"].Style.BackColor = Color.Lavender;
                 }
 
-                if (Check.CheckColumns(list_2, row, "ColumnName", "Suggested Type"))
+                if (Check.CheckColumns(list2, row, "ColumnName", "Suggested Type"))
                 {
                     row.Cells["Suggested Type"].Style.BackColor = Color.Lavender;
                 }
 
-                if (Check.CheckColumns(list_2, row, "ColumnName", "Max Lenght"))
+                if (Check.CheckColumns(list2, row, "ColumnName", "Max Lenght"))
                 {
                     row.Cells["Max Lenght"].Style.BackColor = Color.Lavender;
                 }

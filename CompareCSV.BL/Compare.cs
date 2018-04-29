@@ -12,32 +12,19 @@ namespace CompareCSV.BL
 {
     public class Compare
     {
-        ListOfArray listArray = new ListOfArray();
+        private readonly IRepository _repository;
 
-        public ListOfArray ParseCSV(string path)
+        public Compare(IRepository repository)
         {
-            try
-            {
-                using (StreamReader readFile = new StreamReader(path))
-                {
-                    string line;
-                    string[] row;
-
-                    while ((line = readFile.ReadLine()) != null)
-                    {
-                        row = line.Split(';');
-                        listArray.list.Add(row);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-               MessageBox.Show(e.Message);
-            }
-
-            return listArray;
+            _repository = repository;
         }
-
+ 
+        public ListOfArray GenerateData(string path)
+        {
+            ListOfArray lst = new ListOfArray();
+            lst.List = _repository.GetData(path);
+            return lst;
+        }
 
         public DataTable ConvertListToDataTable(ListOfArray value)
         {
@@ -46,7 +33,7 @@ namespace CompareCSV.BL
 
             // Get max columns.
             int columns = 0;
-            foreach (var array in value.list)
+            foreach (var array in value.List)
             {
                 if (array.Length > columns)
                 {
@@ -80,7 +67,7 @@ namespace CompareCSV.BL
             // Add transpond rows.
             for (int i = 0; i < columns; i++)
             {
-                table.Rows.Add(value.list[0].ElementAt(i), GetFirstValueFromListOfArrraysByMaxLentgh(value, ColMaxLenght(value, i), i), TryParseStringInListOfArrrays(value.list[1].ElementAt(i), i), ColMaxLenght(value, i));
+                table.Rows.Add(value.List[0].ElementAt(i), GetFirstValueFromListOfArrraysByMaxLentgh(value, ColMaxLenght(value, i), i), TryParseStringInListOfArrrays(value.List[1].ElementAt(i), i), ColMaxLenght(value, i));
             }
 
             return table;
@@ -89,7 +76,7 @@ namespace CompareCSV.BL
 
         public int ColMaxLenght(ListOfArray arr, int i)
         {
-            return arr.list.Skip(1).Max(p => p[i].Length);
+            return arr.List.Skip(1).Max(p => p[i].Length);
         }
 
 
@@ -128,7 +115,7 @@ namespace CompareCSV.BL
 
         public string GetFirstValueFromListOfArrraysByMaxLentgh(ListOfArray array, int maxLentgh, int i)
         {
-            return array.list.Skip(1).First(p => p[i].Length == maxLentgh).ElementAt(i);
+            return array.List.Skip(1).First(p => p[i].Length == maxLentgh).ElementAt(i);
         }
 
     }
