@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareCSV", "CompareCSV\CompareCSV.csproj", "{44246432-17E6-44F9-8B07-2F49FA84D18D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareCSV.Data", "CompareCSV.Data\CompareCSV.Data.csproj", "{CE901417-99F5-49DD-AD5A-D9D94064797D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareCSV.BL", "CompareCSV.BL\CompareCSV.BL.csproj", "{C41CCB0D-3AD8-45A4-9F9C-B1743B500EE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{44246432-17E6-44F9-8B07-2F49FA84D18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44246432-17E6-44F9-8B07-2F49FA84D18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44246432-17E6-44F9-8B07-2F49FA84D18D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE901417-99F5-49DD-AD5A-D9D94064797D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE901417-99F5-49DD-AD5A-D9D94064797D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE901417-99F5-49DD-AD5A-D9D94064797D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE901417-99F5-49DD-AD5A-D9D94064797D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41CCB0D-3AD8-45A4-9F9C-B1743B500EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41CCB0D-3AD8-45A4-9F9C-B1743B500EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41CCB0D-3AD8-45A4-9F9C-B1743B500EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41CCB0D-3AD8-45A4-9F9C-B1743B500EE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

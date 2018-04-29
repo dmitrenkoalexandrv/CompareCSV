@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompareCSV.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -7,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ComapreCSV
+namespace CompareCSV.BL
 {
-    static class Compare
+    public class Compare
     {
-        static public List<string[]> parseCSV(string path)
-        {
-            List<string[]> parsedData = new List<string[]>();
+        ListOfArray listArray = new ListOfArray();
 
+        public ListOfArray ParseCSV(string path)
+        {
             try
             {
                 using (StreamReader readFile = new StreamReader(path))
@@ -25,27 +26,27 @@ namespace ComapreCSV
                     while ((line = readFile.ReadLine()) != null)
                     {
                         row = line.Split(';');
-                        parsedData.Add(row);
+                        listArray.list.Add(row);
                     }
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+               MessageBox.Show(e.Message);
             }
 
-            return parsedData;
+            return listArray;
         }
 
 
-        public static DataTable ConvertListToDataTable(List<string[]> list)
+        public DataTable ConvertListToDataTable(ListOfArray value)
         {
             // New table.
             DataTable table = new DataTable();
 
             // Get max columns.
             int columns = 0;
-            foreach (var array in list)
+            foreach (var array in value.list)
             {
                 if (array.Length > columns)
                 {
@@ -79,20 +80,20 @@ namespace ComapreCSV
             // Add transpond rows.
             for (int i = 0; i < columns; i++)
             {
-                table.Rows.Add(list[0].ElementAt(i), GetFirstValueFromListOfArrraysByMaxLentgh(list, ColMaxLenght(list, i),i), TryParseStringInListOfArrrays(list[1].ElementAt(i), i), ColMaxLenght(list, i));
+                table.Rows.Add(value.list[0].ElementAt(i), GetFirstValueFromListOfArrraysByMaxLentgh(value, ColMaxLenght(value, i), i), TryParseStringInListOfArrrays(value.list[1].ElementAt(i), i), ColMaxLenght(value, i));
             }
 
             return table;
         }
 
 
-        public static int ColMaxLenght(List<string[]> arr, int i)
+        public int ColMaxLenght(ListOfArray arr, int i)
         {
-            return arr.Skip(1).Max(p => p[i].Length);
+            return arr.list.Skip(1).Max(p => p[i].Length);
         }
 
 
-        public static string TryParseStringInListOfArrrays(string value, int i)
+        public string TryParseStringInListOfArrrays(string value, int i)
         {
             Double dbl;
             Int32 integ;
@@ -125,9 +126,9 @@ namespace ComapreCSV
         }
 
 
-        public static string GetFirstValueFromListOfArrraysByMaxLentgh(List<string[]> array, int maxLentgh, int i)
+        public string GetFirstValueFromListOfArrraysByMaxLentgh(ListOfArray array, int maxLentgh, int i)
         {
-            return array.Skip(1).First(p => p[i].Length == maxLentgh).ElementAt(i);
+            return array.list.Skip(1).First(p => p[i].Length == maxLentgh).ElementAt(i);
         }
 
     }

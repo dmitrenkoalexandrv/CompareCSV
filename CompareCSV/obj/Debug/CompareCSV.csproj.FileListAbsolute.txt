@@ -7,3 +7,7 @@ C:\Users\mda\Documents\Visual Studio 2013\Projects\CompareCSV\CompareCSV\obj\Deb
 C:\Users\mda\Documents\Visual Studio 2013\Projects\CompareCSV\CompareCSV\obj\Debug\ComapreCSV.Form1.resources
 C:\Users\mda\Documents\Visual Studio 2013\Projects\CompareCSV\CompareCSV\obj\Debug\ComapreCSV.Properties.Resources.resources
 C:\Users\mda\Documents\Visual Studio 2013\Projects\CompareCSV\CompareCSV\obj\Debug\CompareCSV.csprojResolveAssemblyReference.cache
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV\bin\Debug\CompareCSV.BL.dll
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV\bin\Debug\CompareCSV.BL.pdb
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV\bin\Debug\CompareCSV.Data.dll
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV\bin\Debug\CompareCSV.Data.pdb
