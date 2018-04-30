@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -67,7 +68,8 @@ namespace CompareCSV.BL
             // Add transpond rows.
             for (int i = 0; i < columns; i++)
             {
-                table.Rows.Add(value.List[0].ElementAt(i), GetFirstValueFromListOfArrraysByMaxLentgh(value, ColMaxLenght(value, i), i), TryParseStringInListOfArrrays(value.List[1].ElementAt(i), i), ColMaxLenght(value, i));
+                table.Rows.Add(value.List[0].ElementAt(i), GetFirstValueFromListOfArrraysByMaxLentgh(value, ColMaxLenght(value, i), i),
+                    TryParseStringInListOfArrrays(GetFirstValueFromListOfArrraysByMaxLentgh(value, ColMaxLenght(value, i), i)), ColMaxLenght(value, i));
             }
 
             return table;
@@ -80,19 +82,25 @@ namespace CompareCSV.BL
         }
 
 
-        public string TryParseStringInListOfArrrays(string value, int i)
+        public string TryParseStringInListOfArrrays(string value)
         {
+            DateTime dates;
+            string dateformat = "yyyyMMdd";
             Double dbl;
             Int32 integ;
             Int64 integ64;
             String caseSwitch = "";
 
+            bool resultDates = DateTime.TryParseExact(value, dateformat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dates);
             bool resultInt = Int32.TryParse(value.ToString().Replace('.', ','), out integ);
             bool resultInt64 = Int64.TryParse(value.ToString().Replace('.', ','), out integ64);
             bool resultDouble = Double.TryParse(value.ToString().Replace('.', ','), out dbl);
 
-
-            if (resultInt == true)
+            if (resultDates == true)
+            {
+                caseSwitch = "System.DateTime";
+            }
+            else if (resultInt == true)
             {
                 caseSwitch = "System.Int32";
             }
