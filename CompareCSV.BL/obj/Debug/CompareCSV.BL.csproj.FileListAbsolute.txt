@@ -1,7 +1,7 @@
-C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\obj\Debug\CompareCSV.BL.csprojResolveAssemblyReference.cache
 C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\bin\Debug\CompareCSV.BL.dll
 C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\bin\Debug\CompareCSV.BL.pdb
-C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\obj\Debug\CompareCSV.BL.dll
-C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\obj\Debug\CompareCSV.BL.pdb
 C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\bin\Debug\CompareCSV.Data.dll
 C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\bin\Debug\CompareCSV.Data.pdb
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\obj\Debug\CompareCSV.BL.csprojResolveAssemblyReference.cache
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\obj\Debug\CompareCSV.BL.dll
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.BL\obj\Debug\CompareCSV.BL.pdb

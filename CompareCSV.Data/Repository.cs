@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,6 +34,7 @@ namespace CompareCSV.Data
                 MessageBox.Show(e.Message);
             }
 
+            Thread.Sleep(3000);
             return list;
         }
     }

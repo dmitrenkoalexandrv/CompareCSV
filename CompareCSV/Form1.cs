@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CompareCSV.BL;
 using CompareCSV.Data;
+using System.Threading;
 
 namespace ComapreCSV
 {
@@ -19,24 +20,9 @@ namespace ComapreCSV
         public Form1()
         {
             InitializeComponent();
-            
-            IRepository repo1 = new Repository();
-            IRepository repo2 = new Repository();
 
-            Compare comparator1 = new Compare(repo1);
-            Compare comparator2 = new Compare(repo2);
-
-            ListOfArray res1 = comparator1.GenerateData(@"c:\tmp\ex.csv");
-            DataTable table1 = comparator1.ConvertListToDataTable(res1);
-            dataGridView1.DataSource = table1;
-
-            ListOfArray res2 = comparator2.GenerateData(@"c:\tmp\ex_1.csv");
-            DataTable table2 = comparator2.ConvertListToDataTable(res2);
-            dataGridView2.DataSource = table2;
-
-            this.ActiveControl = button1;
+            this.ActiveControl = button2;
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -97,8 +83,45 @@ namespace ComapreCSV
             dataGridView2.ClearSelection();
         }
 
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            Task<ListOfArray> task1 = null;
+            Task<ListOfArray> task2 = null;
 
-        
+            IRepository repo1 = new Repository();
+            IRepository repo2 = new Repository();
+
+            Compare comparator1 = new Compare(repo1);
+            Compare comparator2 = new Compare(repo2);
+
+            
+            task1 = Task.Factory.StartNew(() => comparator1.GenerateData(@"c:\tmp\ex.csv"));
+            task2 = Task.Factory.StartNew(() => comparator2.GenerateData(@"c:\tmp\ex_1.csv"));
+
+            ListOfArray res1 = await task1;
+            ListOfArray res2 = await task2;
+
+            DataTable table1 = comparator1.ConvertListToDataTable(res1);
+            dataGridView1.DataSource = table1;
+
+            DataTable table2 = comparator2.ConvertListToDataTable(res2);
+            dataGridView2.DataSource = table2;
+        }
+
+        // Часы
+        private void f_main_Load(object sender, EventArgs e)
+        {
+            Action action = () =>
+            {
+                while (true)
+                {
+                    Invoke((Action)(() => label1.Text = DateTime.Now.ToLongTimeString()));
+                    Thread.Sleep(1000);
+                }
+            };
+
+            Task task = Task.Factory.StartNew(action);
+        }
 
     
     }

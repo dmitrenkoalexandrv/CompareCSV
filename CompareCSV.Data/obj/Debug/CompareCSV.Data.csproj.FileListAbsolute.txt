@@ -2,3 +2,4 @@ C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.Data\bi
 C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.Data\bin\Debug\CompareCSV.Data.pdb
 C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.Data\obj\Debug\CompareCSV.Data.dll
 C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.Data\obj\Debug\CompareCSV.Data.pdb
+C:\Users\mda\Documents\visual studio 2013\Projects\CompareCSV\CompareCSV.Data\obj\Debug\CompareCSV.Data.csprojResolveAssemblyReference.cache
